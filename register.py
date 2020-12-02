@@ -12,12 +12,11 @@ print('')
 
 if os.environ['REQUEST_METHOD']=="POST":
     datos= cgi.FieldStorage()
-    username =datos.getvalue('nombre')#recoge los valores del object de register.js
+    username =datos.getvalue('nombre')
     password =datos.getvalue('contraseña')
     usuario = Usuario(username,password)
     dao=UsuariosDao()
-    if(dao.consultar(username,password) is None): #consulta si esta creado para registrarlo o no
-        
+    if(dao.consultar(username,password) is None):
         if(dao.registrar(usuario)):
             print(json.dumps('{"tipo":"OK","mensaje":"Usuario creado"}'))
         else:

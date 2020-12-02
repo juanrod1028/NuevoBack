@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 class dao:
-    #Coneccion a la base de datos 
+    
     def __init__(self):
         self.user='username'
         self.password='eagp0606'
