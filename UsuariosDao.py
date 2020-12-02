@@ -25,6 +25,9 @@ class UsuariosDao(dao):
                 print(err)
             return False
 
+    
+   # Clase de objeto para consultar usuarios
+
     def consultar(self,username,password):
         try:
             cnx = super().connectDB()
@@ -45,3 +48,4 @@ class UsuariosDao(dao):
             elif err.errno == errorcode.ER_BAD_DB_ERROR:
                 print("Database does not exist")
             return None
+            
