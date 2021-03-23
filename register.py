@@ -14,7 +14,10 @@ if os.environ['REQUEST_METHOD']=="POST":
     datos= cgi.FieldStorage()
     username =datos.getvalue('nombre')
     password =datos.getvalue('contraseña')
-    usuario = Usuario(username,password)
+    direccion =datos.getvalue('direc')
+    email =datos.getvalue('email')
+    identificacion =datos.getvalue('id')
+    usuario = Usuario(username,password,direccion,email,identificacion)
     dao=UsuariosDao()
     if(dao.consultar(username,password) is None):
         if(dao.registrar(usuario)):

@@ -10,7 +10,7 @@ class UsuariosDao(dao):
         try:
             cnx = super().connectDB()
             cursor = cnx.cursor()
-            sql="insert into usuario (username, password) values ('"+usuario.username+"','"+usuario.password+"');"
+            sql="insert into usuario (username, password, direccion, correo, identificacion) values ('"+usuario.username+"','"+usuario.password+"','"+usuario.direccion+"','"+usuario.correo+"','"+usuario.identificacion+"');"
             cursor.execute(sql)
             cnx.commit()
             cursor.close()
@@ -34,8 +34,11 @@ class UsuariosDao(dao):
             usuario=None
             for row in cursor:
                 username=row[0]
-                password=row[1] 
-                usuario=Usuario(username, password)
+                password=row[1]
+                direccion=row[2]
+                correo=row[3]
+                identificacion=row[4] 
+                usuario=Usuario(username, password, direccion, correo, identificacion)
             cursor.close()
             cnx.close()
             return usuario
