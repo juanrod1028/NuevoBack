@@ -11,8 +11,8 @@ class ProductosDao(dao):
         try:
             cnx = super().connectDB()
             cursor = cnx.cursor()
-            sql = "insert into producto (idProducto,nombreProducto,precioProducto,imagenProducto,estadoProducto)  values (%s,%s,%s,%s,%s);"
-            cursor.execute(sql,(producto.idProducto,producto.nombreProducto,producto.precioProducto,producto.imagenProducto,producto.estadoProducto))
+            sql = "insert into producto (precio,id,title,thumbnailUrl,categoria)  values (%s,%s,%s,%s,%s);"
+            cursor.execute(sql,(producto.precioProducto,producto.idProducto,producto.nombreProducto,producto.imagenProducto,producto.categoriaProducto))
             cnx.commit()
             cursor.close()
             cnx.close()

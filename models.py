@@ -8,9 +8,9 @@ class Persona:
         self.identificacion=identificacion
 
 class Producto:
-    def __init__ (self, idProducto, nombreProducto, precioProducto, imagenProducto, estadoProducto):
-        self.idProducto=idProducto
-        self.Producto=nombreProducto
+    def __init__ (self, precioProducto, idProducto, titleProducto, imagenProducto, categoriaProducto):
         self.precioProducto=precioProducto
+        self.idProducto=idProducto
+        self.titleProducto=titleProducto
         self.imagenProducto=imagenProducto
-        self.estadoProducto=estadoProducto
+        self.categoriaProducto=categoriaProducto
