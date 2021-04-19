@@ -26,7 +26,7 @@ class AdminDao(dao):
         try:
             cnx = super().connectDB()
             cursor = cnx.cursor()
-            sql = "select * from persona where username ='"+correo+"' and password = '"+password+"' and permisos = 'a';"
+            sql = "select * from persona where correo ='"+correo+"' and password = '"+password+"' and permisos = 'a';"
             cursor.execute(sql)
             administrador=None
             for row in cursor:
