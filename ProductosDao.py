@@ -31,12 +31,12 @@ class ProductosDao(dao):
         try:
             cnx = super().connectDB()
             cursor = cnx.cursor()
-            sql = "select * from producto where idProducto="+str(idProducto)+";"
+            sql = "select * from producto where id="+str(idProducto)+";"
             cursor.execute(sql)
             producto=None
             for row in cursor:
-                producto = Producto(row[0],row[1],row[2],row[3],row[4])
-                producto.idProducto=row[0]
+                producto = Producto(row[0],row[2],row[3],row[4],row[5])
+                producto.idProducto=row[1]
             cursor.close()
             cnx.close()
             return producto
@@ -53,7 +53,7 @@ class ProductosDao(dao):
         try:
             cnx = super().connectDB()
             cursor = cnx.cursor()
-            sql = "delete from producto where idProducto="+str(producto.idProducto)+"; "
+            sql = "delete from producto where id="+str(producto.idProducto)+"; "
             cursor.execute(sql)
             cnx.commit()
             cursor.close()
@@ -71,8 +71,8 @@ class ProductosDao(dao):
         try:
             cnx = super().connectDB()
             cursor = cnx.cursor()
-            sql = "update producto set idProducto=%s,nombreProducto=%s, imagenProducto =%s, precioProducto=%s where idProducto = %s;"
-            cursor.execute(sql,(producto.idCategoria,producto.nombre,producto.imagen,producto.precio,producto.idProducto))
+            sql = "update producto set precio=%s, id=%s, title =%s, thumbnailUrl=%s, categoria=%s where id=%s;"
+            cursor.execute(sql,(producto.precioProducto,producto.idProducto,producto.titleProducto,producto.imagenProducto,producto.categoriaProducto))
             cnx.commit()
             cursor.close()
             cnx.close()

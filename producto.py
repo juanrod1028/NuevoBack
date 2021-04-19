@@ -21,24 +21,27 @@ if os.environ['REQUEST_METHOD']=="POST":
         print(json.dumps('{"tipo":"error", "mensaje":"error al crear el producto"}'))
 
 elif os.environ['REQUEST_METHOD']=="PUT":
-    producto = dao.consultar(datos.getvalue('idProducto'))
+    producto = dao.consultar(datos.getvalue('id'))
     if producto is None:
         print(json.dumps('{"tipo":"error", "mensaje":"Ese producto no existe"}'))
     else:
-        if datos.getvalue('nombre') is not None:
-            producto.nombre = datos.getvalue('nombre')
-        if datos.getvalue('imagen') is not None:
-            producto.imagen = datos.getvalue('imagen')
-        if datos.getvalue('unidad') is not None:
-            producto.unidad = datos.getvalue('unidad')
         if datos.getvalue('precio') is not None:
-            producto.precio = datos.getvalue('precio')
+            producto.precioProducto = datos.getvalue('precio')
+        if datos.getvalue('id') is not None:
+            producto.idProducto = datos.getvalue('id')
+        if datos.getvalue('nombre') is not None:
+            producto.titleProducto = datos.getvalue('nombre')
+        if datos.getvalue('imagen') is not None:
+            producto.imagenProducto = datos.getvalue('imagen')
+        if datos.getvalue('categoria') is not None:
+            producto.categoriaProducto = datos.getvalue('categoria')
         if dao.actualizar(producto):
             print(json.dumps('{"tipo":"OK", "mensaje":"Producto actualizado"}'))
         else:
             print(json.dumps('{"tipo":"error", "mensaje":"error al actualizar el producto"}'))
+
 elif os.environ['REQUEST_METHOD']=="DELETE":
-    producto = dao.consultar(datos.getvalue('idProducto'))
+    producto = dao.consultar(datos.getvalue('id'))
     if producto is None:
         print(json.dumps('{"tipo":"error", "mensaje":"Ese producto no existe"}'))
     else:
@@ -46,6 +49,7 @@ elif os.environ['REQUEST_METHOD']=="DELETE":
             print(json.dumps('{"tipo":"OK", "mensaje":"Producto eliminado"}'))
         else:
             print(json.dumps('{"tipo":"error", "mensaje":"error al eliminar la categoria"}'))
+
 
 """
 elif os.environ['REQUEST_METHOD']=="GET":
