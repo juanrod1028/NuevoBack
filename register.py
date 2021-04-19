@@ -2,7 +2,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 from UsuariosDao import UsuariosDao
-from models import Usuario
+from models import Persona
 import json
 import cgi
 import os
@@ -16,8 +16,10 @@ if os.environ['REQUEST_METHOD']=="POST":
     password =datos.getvalue('contraseña')
     direccion =datos.getvalue('direc')
     email =datos.getvalue('email')
+    permisos ="u"
     identificacion =datos.getvalue('id')
-    usuario = Usuario(username,password,direccion,email,identificacion)
+    
+    usuario = Persona(username,password,direccion,email,permisos,identificacion)
     dao=UsuariosDao()
     if(dao.consultar(username,password) is None):
         if(dao.registrar(usuario)):

@@ -3,7 +3,7 @@ import mysql.connector
 from mysql.connector import errorcode
 from UsuariosDao import UsuariosDao
 from AdminDao import AdminDao
-from models import Usuario
+from models import Persona
 import json
 import cgi
 import os

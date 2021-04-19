@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 from dao import dao
-from models import Usuario
+from models import Persona
 class UsuariosDao(dao):
     """
     Clase de objeto de acceso a datos de los usuarios
@@ -10,7 +10,7 @@ class UsuariosDao(dao):
         try:
             cnx = super().connectDB()
             cursor = cnx.cursor()
-            sql="insert into usuario (username, password, direccion, correo, identificacion) values ('"+usuario.username+"','"+usuario.password+"','"+usuario.direccion+"','"+usuario.correo+"','"+usuario.identificacion+"');"
+            sql="insert into persona (username, password, direccion, correo, permisos, identificacion) values ('"+usuario.username+"','"+usuario.password+"','"+usuario.direccion+"','"+usuario.correo+"','"+usuario.permisos+"','"+usuario.identificacion+"');"
             cursor.execute(sql)
             cnx.commit()
             cursor.close()
@@ -37,8 +37,9 @@ class UsuariosDao(dao):
                 password=row[1]
                 direccion=row[2]
                 correo=row[3]
-                identificacion=row[4] 
-                usuario=Usuario(username, password, direccion, correo, identificacion)
+                permisos=row[4]
+                identificacion=row[5] 
+                usuario=Persona(username, password, direccion, correo, permisos, identificacion)
             cursor.close()
             cnx.close()
             return usuario
