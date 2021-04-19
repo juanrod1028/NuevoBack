@@ -16,8 +16,8 @@ if os.environ['REQUEST_METHOD']=="POST":
     password =datos.getvalue('contraseña')
     direccion =datos.getvalue('direc')
     email =datos.getvalue('email')
-    permisos ='a'
     identificacion =datos.getvalue('id')
+    permisos =datos.getvalue('permisos')
 
     administrador=Persona(username,password,direccion,email,permisos,identificacion)
     dao=AdminDao()
