@@ -12,12 +12,12 @@ print('Content-Type: text/json')
 print('')
 datos= cgi.FieldStorage()
 if os.environ['REQUEST_METHOD']=="POST":
-    username = datos.getvalue('nombre')
+    correo = datos.getvalue('correo')
     password = datos.getvalue('contraseña')
     dao=UsuariosDao()
     admindao = AdminDao()
-    usuario = dao.consultar(username,password)
-    admin = admindao.consultar(username,password)
+    usuario = dao.consultar(correo,password)
+    admin = admindao.consultar(correo,password)
 
     if(usuario is not None):
         print(json.dumps('{"tipo":"OK","mensaje":"Bienvenido/a, '+usuario.username+'"}'))

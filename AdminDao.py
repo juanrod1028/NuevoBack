@@ -21,12 +21,12 @@ class AdminDao(dao):
                 print("Database does not exist")
             return None
 
-    def consultar(self,username,password):
+    def consultar(self,correo,password):
        
         try:
             cnx = super().connectDB()
             cursor = cnx.cursor()
-            sql = "select * from persona where username ='"+username+"' and password = '"+password+"' and permisos = 'a';"
+            sql = "select * from persona where username ='"+correo+"' and password = '"+password+"' and permisos = 'a';"
             cursor.execute(sql)
             administrador=None
             for row in cursor:

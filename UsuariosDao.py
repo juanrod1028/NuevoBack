@@ -25,11 +25,11 @@ class UsuariosDao(dao):
                 print(err)
             return False
 
-    def consultar(self,username,password):
+    def consultar(self,correo,password):
         try:
             cnx = super().connectDB()
             cursor = cnx.cursor()
-            sql = "select * from usuario where username ='"+username+"' and password = '"+password+"';"
+            sql = "select * from usuario where correo ='"+correo+"' and password = '"+password+"';"
             cursor.execute(sql)
             usuario=None
             for row in cursor:
