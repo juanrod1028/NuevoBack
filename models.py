@@ -14,3 +14,11 @@ class Producto:
         self.titleProducto=titleProducto
         self.imagenProducto=imagenProducto
         self.categoriaProducto=categoriaProducto
+
+class ProductoX:
+    def __init__ (self, precioProducto, idProducto, titleProducto, imagenProducto, categoriaProducto):
+        self.precioProducto=precioProducto
+        self.idProducto=idProducto
+        self.titleProducto=titleProducto
+        self.imagenProducto=imagenProducto
+        self.categoriaProducto=categoriaProducto

@@ -1,5 +1,7 @@
 import mysql.connector
+import json
 from mysql.connector import errorcode
+
 class dao:
     
     def __init__(self):
@@ -10,3 +12,5 @@ class dao:
     def connectDB(self):
         cnx = mysql.connector.connect(user=self.user, password = self.password, database=self.database, host=self.host)
         return cnx
+
+
